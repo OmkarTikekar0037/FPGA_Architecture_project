@@ -6,6 +6,7 @@
 "./Core/Src/system_stm32f4xx.o"
 "./Core/Src/verishot_lexer.o"
 "./Core/Src/verishot_parser.o"
+"./Core/Src/verishot_semantic.o"
 "./Core/Startup/startup_stm32f401ccux.o"
 "./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o"
 "./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o"

@@ -60,8 +60,8 @@ all: main-build
 main-build: VERISHOT_compiler.elf secondary-outputs
 
 # Tool invocations
-VERISHOT_compiler.elf VERISHOT_compiler.map: $(OBJS) $(USER_OBJS) C:\Omkar_project_R\FPGA_Architecture_project\STM32\VERISHOT_compiler\STM32F401CCUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "VERISHOT_compiler.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Omkar_project_R\FPGA_Architecture_project\STM32\VERISHOT_compiler\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="VERISHOT_compiler.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+VERISHOT_compiler.elf VERISHOT_compiler.map: $(OBJS) $(USER_OBJS) D:\FPGA_Architecture_project\STM32\VERISHOT_compiler\STM32F401CCUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "VERISHOT_compiler.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\FPGA_Architecture_project\STM32\VERISHOT_compiler\STM32F401CCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="VERISHOT_compiler.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
