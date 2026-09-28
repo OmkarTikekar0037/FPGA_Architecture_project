@@ -617,6 +617,10 @@
     [
       "bb7732f4-c30b-41ef-9a2c-def7569b0c6e",
       "4to1mux"
+    ],
+    [
+      "4680d568-9755-42ff-8d52-3fb28fb52c4e",
+      "switch_control_regs"
     ]
   ],
   "text_variables": {}
