@@ -1,0 +1,4 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "ESP32_devkit") (type "KiCad") (uri "${KIPRJMOD}/ESP32_devkit.pretty") (options "") (descr ""))
+)

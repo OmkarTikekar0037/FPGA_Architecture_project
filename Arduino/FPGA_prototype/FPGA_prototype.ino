@@ -1,11 +1,21 @@
-#define SER   12
-#define RCLK  11
-#define SCLK  10
+// #define SER   12
+// #define RCLK  11
+// #define SCLK  10
+
+// // 74LS151 select lines
+// #define S0    6
+// #define S1    5
+// #define S2    4
+
+#define SER   23
+#define RCLK  19
+#define SCLK  18
 
 // 74LS151 select lines
-#define S0    6
-#define S1    5
-#define S2    4
+#define S0    25
+#define S1    26
+#define S2    27
+
 
 
 // ============================================================
