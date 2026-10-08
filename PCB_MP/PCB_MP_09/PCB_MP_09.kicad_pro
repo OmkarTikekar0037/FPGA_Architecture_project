@@ -40,8 +40,8 @@
         "other_text_upright": false,
         "pads": {
           "drill": 0.8,
-          "height": 1.27,
-          "width": 2.54
+          "height": 2.0,
+          "width": 2.4
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -62,8 +62,8 @@
           "hatch_thickness": 1.0,
           "min_clearance": 0.8,
           "min_island_area": 10.0,
-          "min_thickness": 0.25,
-          "pad_connection": 2,
+          "min_thickness": 0.5,
+          "pad_connection": 1,
           "remove_islands": 0,
           "thermal_relief_gap": 0.5,
           "thermal_relief_spoke_width": 0.5
@@ -539,7 +539,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "",
+      "plot": "../../PLOTS/",
       "pos_files": "",
       "specctra_dsn": "",
       "step": "",
@@ -674,7 +674,7 @@
         "uuid": "1dac18ce-16db-4451-8405-430a835edc33"
       }
     ],
-    "used_designators": "SW1-2,U21,J2,#PWR37-40",
+    "used_designators": "J12,#PWR44",
     "variants": []
   },
   "sheets": [
