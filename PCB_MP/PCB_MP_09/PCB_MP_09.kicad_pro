@@ -243,6 +243,10 @@
         {
           "diameter": 0.0,
           "drill": 0.0
+        },
+        {
+          "diameter": 3.0,
+          "drill": 0.6
         }
       ],
       "zones_allow_external_fillets": false
@@ -675,7 +679,7 @@
         "uuid": "1dac18ce-16db-4451-8405-430a835edc33"
       }
     ],
-    "used_designators": "J3-5,J13-29,#PWR45-49,D5-36,TP1-4",
+    "used_designators": "J3-6,J13-29,#PWR43-50,D5-36,TP1-4,H1-4",
     "variants": []
   },
   "sheets": [
