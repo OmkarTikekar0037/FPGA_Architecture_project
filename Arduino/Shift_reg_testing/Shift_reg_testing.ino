@@ -1,6 +1,6 @@
-#define Ser 12
-#define Rclk 11
-#define Sclk 10
+#define Ser 17
+#define Rclk 5
+#define Sclk 18
 
 void setup() {
   pinMode(Ser, OUTPUT);

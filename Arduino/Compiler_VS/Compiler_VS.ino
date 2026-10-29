@@ -53,18 +53,18 @@
  * LUT configuration chain
  * ------------------------------------------------------------ */
 
-#define LUT_SER_PIN       2
-#define LUT_SRCLK_PIN     3
-#define LUT_RCLK_PIN      4
+#define LUT_SER_PIN       17
+#define LUT_SRCLK_PIN     5
+#define LUT_RCLK_PIN      18
 
 
 /* ------------------------------------------------------------
  * Routing configuration chain
  * ------------------------------------------------------------ */
 
-#define ROUTE_SER_PIN     5
-#define ROUTE_SRCLK_PIN   6
-#define ROUTE_RCLK_PIN    7
+#define ROUTE_SER_PIN     12
+#define ROUTE_SRCLK_PIN   14
+#define ROUTE_RCLK_PIN    27
 
 
 /* ============================================================

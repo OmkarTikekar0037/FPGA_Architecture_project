@@ -37,6 +37,7 @@ Thumbs.db
 # =========================
 *.tmp
 *.bak
+*.zip
 
 # =========================
 # Keil / IAR leftovers (just in case)
@@ -46,3 +47,5 @@ Thumbs.db
 *.eww
 *.ewp
 *.ewd
+#drill files
+*.drl

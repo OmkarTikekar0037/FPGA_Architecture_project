@@ -1,20 +1,29 @@
-// #define SER   12
-// #define RCLK  11
-// #define SCLK  10
+// #define SER1   12
+// #define RCLK1  11
+// #define SCLK1  10
 
 // // 74LS151 select lines
 // #define S0    6
 // #define S1    5
-// #define S2    4
+// #define S2    
 
-#define SER   23
-#define RCLK  19
-#define SCLK  18
+#define SER1   17
+#define RCLK1  5
+#define SCLK1  18
 
 // 74LS151 select lines
-#define S0    25
-#define S1    26
-#define S2    27
+#define S0    2
+#define S1    4
+#define S2    16
+
+#define SER2   19
+#define RCLK2  21 
+#define SCLK2  22
+
+// 74LS151 select lines
+#define S01    12
+#define S11    14
+
 
 
 
@@ -33,13 +42,23 @@ void loadLUT(byte data)
 {
   // Shift data into 74HC595
 
-  digitalWrite(RCLK, LOW);
+  digitalWrite(RCLK1, LOW);
 
-  shiftOut(SER, SCLK, MSBFIRST, data);
+  shiftOut(SER1, SCLK11, MSBFIRST, data);
 
   // Latch data to QA-QH
 
-  digitalWrite(RCLK, HIGH);
+  digitalWrite(RCLK1, HIGH);
+}
+void loadLUT1(byte data){
+digitalWrite(RCLK2, LOW);
+
+  shiftOut(SER2, SCLK2, MSBFIRST, data);
+
+  // Latch data to QA-QH
+
+  digitalWrite(RCLK2, HIGH);
+
 }
 
 
@@ -185,26 +204,26 @@ bool isGate(String command)
 
 void printLUT(byte data)
 {
-  Serial.print("LUT = ");
+  SER1ial.print("LUT = ");
 
   for (int i = 7; i >= 0; i--)
   {
-    Serial.print((data >> i) & 1);
+    SER1ial.print((data >> i) & 1);
   }
 
-  Serial.println();
+  SER1ial.println();
 
-  Serial.println();
-  Serial.println("QH QG QF QE QD QC QB QA");
+  SER1ial.println();
+  SER1ial.println("QH QG QF QE QD QC QB QA");
 
   for (int i = 7; i >= 0; i--)
   {
-    Serial.print(" ");
-    Serial.print((data >> i) & 1);
-    Serial.print(" ");
+    SER1ial.print(" ");
+    SER1ial.print((data >> i) & 1);
+    SER1ial.print(" ");
   }
 
-  Serial.println();
+  SER1ial.println();
 }
 
 
@@ -218,27 +237,27 @@ void configureGate(String gate)
 
   currentGate = gate;
 
-  Serial.println();
-  Serial.print("Configuring ");
-  Serial.print(gate);
-  Serial.println("...");
+  SER1ial.println();
+  SER1ial.print("Configuring ");
+  SER1ial.print(gate);
+  SER1ial.println("...");
 
   // Load LUT into 595
 
   loadLUT(lutData);
 
-  Serial.println("LUT configuration loaded.");
+  SER1ial.println("LUT configuration loaded.");
 
   printLUT(lutData);
 
-  Serial.println();
-  Serial.print("Current gate: ");
-  Serial.println(currentGate);
+  SER1ial.println();
+  SER1ial.print("Current gate: ");
+  SER1ial.println(currentGate);
 
-  Serial.println();
-  Serial.println("Enter A B C");
-  Serial.println("Example: 1 0 1");
-  Serial.println();
+  SER1ial.println();
+  SER1ial.println("Enter A B C");
+  SER1ial.println("Example: 1 0 1");
+  SER1ial.println();
 }
 
 
@@ -248,38 +267,38 @@ void configureGate(String gate)
 
 void setup()
 {
-  pinMode(SER, OUTPUT);
-  pinMode(RCLK, OUTPUT);
-  pinMode(SCLK, OUTPUT);
+  pinMode(SER1, OUTPUT);
+  pinMode(RCLK1, OUTPUT);
+  pinMode(SCLK1, OUTPUT);
 
   pinMode(S0, OUTPUT);
   pinMode(S1, OUTPUT);
   pinMode(S2, OUTPUT);
 
-  Serial.begin(9600);
+  SER1ial.begin(9600);
 
-  digitalWrite(RCLK, LOW);
+  digitalWrite(RCLK1, LOW);
 
   // Initial MUX state
 
   setMUX(0, 0, 0);
 
-  Serial.println();
-  Serial.println("======================================");
-  Serial.println("        3-INPUT LUT TESTER");
-  Serial.println("======================================");
-  Serial.println();
+  SER1ial.println();
+  SER1ial.println("======================================");
+  SER1ial.println("        3-INPUT LUT TESTER");
+  SER1ial.println("======================================");
+  SER1ial.println();
 
-  Serial.println("Available gates:");
-  Serial.println("  AND");
-  Serial.println("  OR");
-  Serial.println("  NAND");
-  Serial.println("  NOR");
-  Serial.println("  XOR");
-  Serial.println("  XNOR");
+  SER1ial.println("Available gates:");
+  SER1ial.println("  AND");
+  SER1ial.println("  OR");
+  SER1ial.println("  NAND");
+  SER1ial.println("  NOR");
+  SER1ial.println("  XOR");
+  SER1ial.println("  XNOR");
 
-  Serial.println();
-  Serial.println("Enter a gate:");
+  SER1ial.println();
+  SER1ial.println("Enter a gate:");
 }
 
 
@@ -289,13 +308,13 @@ void setup()
 
 void loop()
 {
-  if (!Serial.available())
+  if (!SER1ial.available())
     return;
 
 
   // Read complete line
 
-  String input = Serial.readStringUntil('\n');
+  String input = SER1ial.readStringUntil('\n');
 
   input.trim();
   input.toUpperCase();
@@ -308,7 +327,7 @@ void loop()
 
 
   // ==========================================================
-  // FIRST: Check whether user entered a GATE
+  // FIRST: Check whether uSER1 entered a GATE
   //
   // This is checked regardless of the current state.
   // Therefore you can change the gate at any time.
@@ -328,17 +347,17 @@ void loop()
 
   if (currentGate == "")
   {
-    Serial.println();
-    Serial.println("Please select a gate first.");
+    SER1ial.println();
+    SER1ial.println("Please select a gate first.");
 
-    Serial.println();
-    Serial.println("Available:");
-    Serial.println("AND");
-    Serial.println("OR");
-    Serial.println("NAND");
-    Serial.println("NOR");
-    Serial.println("XOR");
-    Serial.println("XNOR");
+    SER1ial.println();
+    SER1ial.println("Available:");
+    SER1ial.println("AND");
+    SER1ial.println("OR");
+    SER1ial.println("NAND");
+    SER1ial.println("NOR");
+    SER1ial.println("XOR");
+    SER1ial.println("XNOR");
 
     return;
   }
@@ -357,20 +376,20 @@ void loop()
 
   if (sscanf(input.c_str(), "%d %d %d", &A, &B, &C) != 3)
   {
-    Serial.println();
-    Serial.println("Invalid input.");
+    SER1ial.println();
+    SER1ial.println("Invalid input.");
 
-    Serial.println();
-    Serial.println("Enter:");
-    Serial.println("A B C");
+    SER1ial.println();
+    SER1ial.println("Enter:");
+    SER1ial.println("A B C");
 
-    Serial.println();
-    Serial.println("Example:");
-    Serial.println("1 0 1");
+    SER1ial.println();
+    SER1ial.println("Example:");
+    SER1ial.println("1 0 1");
 
-    Serial.println();
-    Serial.println("Or enter a new gate:");
-    Serial.println("AND / OR / NAND / NOR / XOR / XNOR");
+    SER1ial.println();
+    SER1ial.println("Or enter a new gate:");
+    SER1ial.println("AND / OR / NAND / NOR / XOR / XNOR");
 
     return;
   }
@@ -384,8 +403,8 @@ void loop()
       (B != 0 && B != 1) ||
       (C != 0 && C != 1))
   {
-    Serial.println();
-    Serial.println("ERROR: A, B and C must be 0 or 1.");
+    SER1ial.println();
+    SER1ial.println("ERROR: A, B and C must be 0 or 1.");
 
     return;
   }
@@ -415,7 +434,7 @@ void loop()
   // ==========================================================
   // Calculate expected result
   //
-  // This is ONLY for serial-monitor verification.
+  // This is ONLY for SER1ial-monitor verification.
   // The actual result is generated by:
   //
   // 595 -> 151 -> LED
@@ -460,36 +479,36 @@ void loop()
   // Display information
   // ==========================================================
 
-  Serial.println();
+  SER1ial.println();
 
-  Serial.print("Gate : ");
-  Serial.println(currentGate);
+  SER1ial.print("Gate : ");
+  SER1ial.println(currentGate);
 
-  Serial.print("A B C : ");
-  Serial.print(A);
-  Serial.print(" ");
-  Serial.print(B);
-  Serial.print(" ");
-  Serial.println(C);
+  SER1ial.print("A B C : ");
+  SER1ial.print(A);
+  SER1ial.print(" ");
+  SER1ial.print(B);
+  SER1ial.print(" ");
+  SER1ial.println(C);
 
-  Serial.print("S2 S1 S0 : ");
-  Serial.print(A);
-  Serial.print(" ");
-  Serial.print(B);
-  Serial.print(" ");
-  Serial.println(C);
+  SER1ial.print("S2 S1 S0 : ");
+  SER1ial.print(A);
+  SER1ial.print(" ");
+  SER1ial.print(B);
+  SER1ial.print(" ");
+  SER1ial.println(C);
 
-  Serial.print("Selected : I");
-  Serial.println(address);
+  SER1ial.print("Selected : I");
+  SER1ial.println(address);
 
-  Serial.print("Expected Y : ");
-  Serial.println(expected);
+  SER1ial.print("Expected Y : ");
+  SER1ial.println(expected);
 
-  Serial.println();
+  SER1ial.println();
 
-  Serial.println("LED = actual LUT output.");
+  SER1ial.println("LED = actual LUT output.");
 
-  Serial.println();
-  Serial.println("Enter another A B C");
-  Serial.println("or enter a new gate.");
+  SER1ial.println();
+  SER1ial.println("Enter another A B C");
+  SER1ial.println("or enter a new gate.");
 }
